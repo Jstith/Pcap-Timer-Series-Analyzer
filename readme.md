@@ -4,7 +4,7 @@ By: _Jstith_
 
 ## About
 
-I was doing a CTF challenge recently, and I fould the need to analyze large collections of flows coming in and out of pcaps to look for beaconing traffic to a C2 server. I tried to use [Arkmine](https://arkime.com/) and [RITA](https://github.com/activecm/rita), but Arkmine's graphics were focused on large volumes of valid update traffic, and RITA didn't really find anything of value, either.
+I was doing a CTF challenge recently, and I found the need to analyze large collections of flows coming in and out of pcaps to look for beaconing traffic to a C2 server. I tried to use [Arkmine](https://arkime.com/) and [RITA](https://github.com/activecm/rita), but Arkmine's graphics were focused on large volumes of valid update traffic, and RITA didn't really find anything of value, either.
 
 So, I worked on a script that parses a PCAP and sorts by source IP to destination IP, and pulls out some simple statistics about each source / destination pair:
 - Number of packets
@@ -13,7 +13,7 @@ So, I worked on a script that parses a PCAP and sorts by source IP to destinatio
 - Standard Deviation between transmission of packets
 
 The idea behind these statistics is that C2 beaconing traffic would, in theory:
-- Have a long total turation
+- Have a long total duration
 - Have a decent number of packets (but probably not a huge number)
 - Have a longer average time between packet transmission
 - Have a low standard deviation for transmission times
@@ -37,6 +37,6 @@ python3 PCTSAnalyzer.py -r {file.pcap}
 ## Future Goals
 
 - Implement IP:Port to IP:Port statistics
-- Group packets into flows or streams, so the average time between transmission and std dev doesn't get thrown off by one large continous session
-- Add some kind of determinstic formula to determine "most likely" candidates for C2
+- Group packets into flows or streams, so the average time between transmission and std dev doesn't get thrown off by one large continuous session
+- Add some kind of deterministic formula to determine "most likely" candidates for C2
 - Improve load speed for larger pcaps
